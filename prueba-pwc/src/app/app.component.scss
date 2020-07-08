@@ -1,0 +1,18 @@
+@media (max-width: 480px) {
+    .app-header{
+        display: none;
+    }
+
+}
+@media (min-width: 481px) and (max-width: 768px) {
+    .app-header{display: none}
+
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .app-header{display: none}
+}
+@media (min-width: 1025px){
+    .app-header-responsive{
+        display: none;
+    }
+}

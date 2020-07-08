@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Noticia</h4>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<form class="form" [formGroup]="registerForm">
+    <div class="from-group">
+        <label>Titulo</label>
+        <input class="form-control" type="text" required [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
+            formControlName="title">
+    </div>
+    <div class="from-group">
+        <label>Descripción</label>
+        <input class="form-control invalid" type="text" required
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }" formControlName="description">
+    </div>
+    <label>Imagen</label>
+    <input style="display: none;" type="file" #inputImage accept="image/*" (change)="openFile($event.target.files)" name="aa">
+    <a style="color: white;" (click)="inputImage.click()" class="btn btn-primary btn-block">Seleccionar Imagen</a>
+    <img [src]="imageURL" width="100%" *ngIf="fileUploaded">
+    <button class="btn btn-success btn-block" (click)="agregar()">Agregar</button>
+</form>

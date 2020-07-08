@@ -1,0 +1,184 @@
+<ul class="nav-bar sticky-top">
+    <li>
+        Inicio
+    </li>
+    <li>
+        <div ngbDropdown class="d-inline-block" #consultoria="ngbDropdown">
+            <button class="dropdown btn" ngbDropdownToggle>
+                <span>Consultoria Tributaria Virtual</span>
+            </button>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>¿Qué es?</button>
+                <button ngbDropdownItem>Perfil de usuario</button>
+                <button ngbDropdownItem>Hacer Pregunta</button>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div ngbDropdown class="d-inline-block" #bibilioteca="ngbDropdown">
+            <button class="dropdown btn" ngbDropdownToggle> <span>Biblioteca
+                    Virtual</span> </button>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>Doctrina DIAN</button>
+                <button ngbDropdownItem>Jurisprudencia Corte Constitucional</button>
+                <button ngbDropdownItem>Jurisprudencia Consejo de Estado</button>
+                <button ngbDropdownItem>Convenios para evitar la doble imposición</button>
+                <button ngbDropdownItem>Textos oficiales de las normas</button>
+                <button ngbDropdownItem>Estatuto Contable</button>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div ngbDropdown class="d-inline-block" #estatuto="ngbDropdown">
+            <button class="dropdown btn" ngbDropdownToggle>
+                <span> Estatuto Tributario</span></button>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>2020</button>
+                <button ngbDropdownItem>2019</button>
+                <button ngbDropdownItem>2018</button>
+                <button ngbDropdownItem>2017</button>
+                <button ngbDropdownItem>2016</button>
+                <button ngbDropdownItem>Comprar</button>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div ngbDropdown class="d-inline-block" #tax="ngbDropdown">
+            <button class="dropdown btn" ngbDropdownToggle><span>Tax &
+                    Legal Times *</span></button>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>Personas naturales Derecho tributario internacional</button>
+                <button ngbDropdownItem>Impuestos Territoriales, Litigios, Regimen SIMPLE</button>
+                <button ngbDropdownItem>Derecho corporativo, Laboral, Migratorio, Comercio exterior, Fusiones y
+                    adquisiciones</button>
+                <button ngbDropdownItem>Impuesto sobre la renta e impuesto al patrimonio</button>
+                <button ngbDropdownItem>IVA, Impuesto nacional al consumo GMF y otros tributos</button>
+                <button ngbDropdownItem>Tax & Legal Clip</button>
+                <button ngbDropdownItem>Boletines /Newsletter /信息推送</button>
+            </div>
+        </div>
+    </li>
+    <li>Servicios Legales</li>
+    <li>PwC Colombia</li>
+</ul>
+<div class="container banner">
+</div>
+<div class="container sub-category">
+    <p>Personas naturales Derecho tributario internacional</p>
+    <p>Impuestos Territoriales, Litigios, Regimen SIMPLE</p>
+    <p>Derecho corporativo, Laboral, Migratorio, Comercio exterior, Fusiones y adquisiciones</p>
+    <p>Impuesto sobre la renta e impuesto al patrimonio</p>
+    <p>IVA, Impuesto nacional al consumo GMF y otros tributos</p>
+    <p>Tax & Legal Clip</p>
+    <div class="div">
+        <p>Boletines</p>
+        <p>Newsletter</p>
+        <p>信息推送 </p>
+    </div>
+</div>
+<div class="container busqueda">
+    <div class="carousel-container">
+        <ngb-carousel class="carousel" [showNavigationIndicators]="false">
+            <ng-template ngbSlide *ngFor="let popularItem of popularNews | async">
+                <div class="picsum-img-wrapper">
+                    <img [src]="popularItem.imageURL" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                    <h6>{{popularItem.title}}</h6>
+                    <p>{{popularItem.description}}</p>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+    <div class="search">
+        <div class="filter">
+            <h4>Buscar noticias</h4>
+            <div class="search-bar">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Recipient's username"
+                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <img src="../../assets/lupa.png" height="38px" style="margin-left: 1rem" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="video">
+            <h4>Tax & Leagal Clip</h4>
+            <p>Medidas laborales en tiempos de Covid-19 Karen Castillo</p>
+            <div style="margin-top: auto;">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/eqHfB6HUpLg">
+                </iframe>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container add-news" *ngIf="auth.user$ | async">
+    <button class="btn btn-primary btn-block" (click)="open()">Agregar Noticia</button>
+</div>
+<div class="container news">
+    <div class="title-wrapper">
+        <h1 class="title">Última hora</h1>
+    </div>
+    <div class="list-news">
+        <div *ngFor="let card of lastestNews |async">
+            <div class="card">
+                <img class="card-img-top" [src]="card.imageURL" alt="Card image cap">
+                <div class="card-body">
+                    <div class="social-container">
+                        <img src="../../assets/facebook.png" height="28px" alt="">
+                        <img src="../../assets/twitter.png" height="28px" alt="">
+                        <img src="../../assets/linkedin.png" height="28px" alt="">
+                        <img src="../../assets/whatsapp.png" height="28px" alt="">
+                    </div>
+                    <h5 class="card-title text-justify">{{card.title}}</h5>
+                    <p class="card-text text-justify">{{card.description}}</p>
+                    <p class="text-right">{{card.date | date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="title-wrapper">
+        <h1 class="title">Otras noticias de interés</h1>
+    </div>
+    <div class="list-news">
+        <div *ngFor="let card of interestNews |async">
+            <div class="card">
+                <img class="card-img-top" [src]="card.imageURL" alt="Card image cap">
+                <div class="card-body">
+                    <div class="social-container">
+                        <img src="../../assets/facebook.png" height="28px" alt="">
+                        <img src="../../assets/twitter.png" height="28px" alt="">
+                        <img src="../../assets/linkedin.png" height="28px" alt="">
+                        <img src="../../assets/whatsapp.png" height="28px" alt="">
+                    </div>
+                    <h5 class="card-title text-justify">{{card.title}}</h5>
+                    <p class="card-text text-justify">{{card.description}}</p>
+                    <p class="text-right">{{card.date | date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="title-wrapper">
+        <h1 class="title">Lo más leído</h1>
+    </div>
+    <div class="list-news">
+        <div *ngFor="let card of popularNews |async">
+            <div class="card">
+                <img class="card-img-top" [src]="card.imageURL" alt="Card image cap">
+                <div class="card-body">
+                    <div class="social-container">
+                        <img src="../../assets/facebook.png" height="28px" alt="">
+                        <img src="../../assets/twitter.png" height="28px" alt="">
+                        <img src="../../assets/linkedin.png" height="28px" alt="">
+                        <img src="../../assets/whatsapp.png" height="28px" alt="">
+                    </div>
+                    <h5 class="card-title text-justify">{{card.title}}</h5>
+                    <p class="card-text text-justify">{{card.description}}</p>
+                    <p class="text-right">{{card.date | date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
