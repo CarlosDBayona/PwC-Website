@@ -1,0 +1,26 @@
+.second-menu{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.user-logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.data{
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 28px;
+    button{
+        margin-left: 1rem;
+    }
+}
+p{
+    margin: auto;
+}
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}

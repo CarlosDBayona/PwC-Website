@@ -1,0 +1,83 @@
+<app-header-app class="app-header"></app-header-app>
+<app-header-responsive class="app-header-responsive" (comand)="open($event)"></app-header-responsive>
+<mat-drawer-container class="example-container" hasBackdrop="true">
+    <mat-drawer mode="over" style="height: 100vh; width: 320px; padding: 1rem;" [opened]='stautsSideNav'>
+        <div *ngIf="auth.user$ | async; then authenticated else guest">
+        </div>
+        <ng-template #guest>
+            <button class="btn btn-primary btn-block" (click)="auth.googleSignin()">
+                <i class="fa fa-google">Iniciar sesión con Google</i> 
+                </button>
+        </ng-template>
+        <ng-template #authenticated>
+            <div *ngIf="auth.user$ | async as user">
+                <p>Bienvenido, {{ user.displayName }}</p>
+            </div>
+        </ng-template>
+        <button mat-raised-button class="btn btn-block">Inicio</button>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Consultoria Tributaria Virtual
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <button class="btn btn-block">¿Qué es?</button>
+                <button class="btn btn-block">Perfil de usuario</button>
+                <button class="btn btn-block">Hacer Pregunta</button>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Biblioteca
+                        Virtual
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <button class="btn btn-block">Doctrina DIAN</button>
+                <button class="btn btn-block">Jurisprudencia Corte Constitucional</button>
+                <button class="btn btn-block">Jurisprudencia Consejo de Estado</button>
+                <button class="btn btn-block">Convenios para evitar la doble imposición</button>
+                <button class="btn btn-block">Textos oficiales de las normas</button>
+                <button class="btn btn-block">Estatuto Contable</button>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Estatuto Tributario
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <button class="btn btn-block">2020</button>
+                <button class="btn btn-block">2019</button>
+                <button class="btn btn-block">2018</button>
+                <button class="btn btn-block">2017</button>
+                <button class="btn btn-block">2016</button>
+                <button class="btn btn-block">Comprar</button>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Tax &
+                        Legal Times *
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <button class="btn btn-block">Personas naturales Derecho tributario internacional</button>
+                <button class="btn btn-block">Impuestos Territoriales, Litigios, Regimen SIMPLE</button>
+                <button class="btn btn-block">Derecho corporativo, Laboral, Migratorio, Comercio exterior, Fusiones
+                    y
+                    adquisiciones</button>
+                <button class="btn btn-block">Impuesto sobre la renta e impuesto al patrimonio</button>
+                <button class="btn btn-block">IVA, Impuesto nacional al consumo GMF y otros tributos</button>
+                <button class="btn btn-block">Tax & Legal Clip</button>
+                <button class="btn btn-block">Boletines /Newsletter /信息推送</button>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <button mat-raised-button class="btn btn-block">PwC Colombia</button>
+        <div *ngIf="auth.user$ | async as user">
+            <button class="btn btn-danger btn-block"(click)="auth.signOut()">Logout</button>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+        <button mat-raised-button (click)="open($event)">Toggle drawer</button>
+    </mat-drawer-content>
+</mat-drawer-container>
